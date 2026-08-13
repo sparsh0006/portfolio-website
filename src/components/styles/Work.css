@@ -93,10 +93,24 @@
 .work-image-in {
   position: relative;
 }
-.work-link {
+
+/* Dual Links Container */
+.work-links {
   position: absolute;
   bottom: 10px;
   right: 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.work-image-in:hover .work-links {
+  opacity: 1;
+}
+
+.work-link {
   background-color: var(--backgroundColor);
   width: 50px;
   border-radius: 50px;
@@ -104,18 +118,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 25px;
+  font-size: 22px;
   box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.5),
     inset 0px 0px 10px 0px #393939;
-  transition: 0.3s;
-  opacity: 0;
-}
-.work-image a:hover {
+  transition: all 0.3s ease;
+  text-decoration: none;
   color: inherit;
+  cursor: pointer;
 }
-.work-image a:hover .work-link {
-  opacity: 1;
+
+.work-link:hover {
+  color: var(--accentColor);
+  box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.7),
+    inset 0px 0px 15px 0px #393939;
+  transform: scale(1.05);
 }
+
+.work-link.live-link svg {
+  margin-top: 2px;
+  margin-right: -2px;
+}
+
+.work-link.github-link svg {
+  width: 20px;
+  height: 20px;
+}
+
 .work-image video {
   position: absolute;
   width: 100%;
@@ -129,6 +157,7 @@
   max-width: 100%;
   max-height: 350px;
 }
+
 @media only screen and (max-height: 900px) {
   .work-image img {
     max-height: 250px;
@@ -143,6 +172,7 @@
     margin-top: 70px;
   }
 }
+
 @media only screen and (max-width: 1400px) {
   .work-title h3 {
     font-size: 35px;
@@ -165,6 +195,7 @@
     font-size: 50px;
   }
 }
+
 @media only screen and (max-width: 1400px) {
   .work-box {
     width: 350px;
@@ -188,18 +219,7 @@
     gap: 20px;
   }
 }
-/* @media only screen and (max-width: 900px) {
-  .work-image img {
-    max-height: 200px;
-  }
-  .work-section h2 {
-    font-size: 40px;
-    margin-bottom: 20px;
-  }
-  .work-box {
-    gap: 20px;
-  }
-} */
+
 @media only screen and (max-width: 1025px) {
   .work-container {
     align-content: normal;

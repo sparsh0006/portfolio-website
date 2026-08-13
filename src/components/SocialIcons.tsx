@@ -60,27 +60,27 @@ const SocialIcons = () => {
     <div className="icons-section">
       <div className="social-icons" data-cursor="icons" id="social">
         <span>
-          <a href="https://github.com" target="_blank">
+          <a href="https://github.com/sparsh0006" target="_blank">
             <FaGithub />
           </a>
         </span>
         <span>
-          <a href="https://www.linkedin.com" target="_blank">
+          <a href="https://www.linkedin.com/in/sparsh-a3b837319/" target="_blank">
             <FaLinkedinIn />
           </a>
         </span>
         <span>
-          <a href="https://x.com" target="_blank">
+          <a href="https://x.com/sparshtwt" target="_blank">
             <FaXTwitter />
           </a>
         </span>
         <span>
-          <a href="https://www.instagram.com" target="_blank">
+          <a href="https://www.instagram.com/theonlysparsh/" target="_blank">
             <FaInstagram />
           </a>
         </span>
       </div>
-      <a className="resume-button" href="#">
+      <a className="resume-button" href="https://drive.google.com/drive/folders/1j2yjGtXzAZbgX2U8UmPdNozQ8BzP0q_z?usp=sharing">
         <HoverLinks text="RESUME" />
         <span>
           <TbNotes />

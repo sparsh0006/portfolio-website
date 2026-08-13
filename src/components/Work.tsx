@@ -6,6 +6,59 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
 
+const projectsData = [
+  {
+    id: 1,
+    title: "Treno.fun",
+    category: "Web3 / Fitness",
+    tools: "Next.js, React, TypeScript, Strava OAuth, Solana",
+    image: "/images/treno.png",
+    liveLink: "https://www.treno.fun/",
+    githubLink: "https://github.com/sparsh0006/treno",
+    description: "Group fitness-staking dApp with Strava integration"
+  },
+  {
+    id: 2,
+    title: "NutriLens AI",
+    category: "AI / LLM",
+    tools: "Next.js, GPT-4o Vision, Opik Tracing, TypeScript",
+    image: "/images/nutrilens.png",
+    liveLink: "https://nutrilens-ai-brown.vercel.app/",
+    githubLink: "https://github.com/sparsh0006/Nutrilens-Ai",
+    description: "Multi-agent nutrition analysis with vision AI"
+  },
+  {
+    id: 3,
+    title: "AeroLink",
+    category: "Data Viz / Web3",
+    tools: "React, D3.js, Node.js, Hedera, MongoDB",
+    image: "/images/aerolink.png",
+    liveLink: "https://aero-link-4d3x.vercel.app/",
+    githubLink: "https://github.com/sparsh0006/AeroLink",
+    description: "Environmental monitoring platform with data visualization"
+  },
+  {
+    id: 4,
+    title: "MoltCourt",
+    category: "Full Stack",
+    tools: "Next.js, TypeScript, PostgreSQL, Prisma",
+    image: "/images/moltcourt.png",
+    liveLink: "https://moltcourt-azure.vercel.app/",
+    githubLink: "https://github.com/sparsh0006/moltcourt",
+    description: "Court management and case tracking system"
+  },
+  {
+    id: 5,
+    title: "Frames402",
+    category: "Frontend",
+    tools: "React, TypeScript, Tailwind CSS, Vite",
+    image: "/images/frames402.png",
+    liveLink: "https://frames402.vercel.app/",
+    githubLink: "https://github.com/sparsh0006/Frames402",
+    description: "Interactive design showcase and component library"
+  }
+];
+
 const Work = () => {
   useGSAP(() => {
   let translateX: number = 0;
@@ -28,7 +81,7 @@ const Work = () => {
     scrollTrigger: {
       trigger: ".work-section",
       start: "top top",
-      end: `+=${translateX}`, // Use actual scroll width
+      end: `+=${translateX}`,
       scrub: true,
       pin: true,
       id: "work",
@@ -40,12 +93,12 @@ const Work = () => {
     ease: "none",
   });
 
-  // Clean up (optional, good practice)
   return () => {
     timeline.kill();
     ScrollTrigger.getById("work")?.kill();
   };
 }, []);
+
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
@@ -53,21 +106,28 @@ const Work = () => {
           My <span>Work</span>
         </h2>
         <div className="work-flex">
-          {[...Array(6)].map((_value, index) => (
-            <div className="work-box" key={index}>
+          {projectsData.map((project) => (
+            <div className="work-box" key={project.id}>
               <div className="work-info">
                 <div className="work-title">
-                  <h3>0{index + 1}</h3>
+                  <h3>0{project.id}</h3>
 
                   <div>
-                    <h4>Project Name</h4>
-                    <p>Category</p>
+                    <h4>{project.title}</h4>
+                    <p>{project.category}</p>
                   </div>
                 </div>
-                <h4>Tools and features</h4>
-                <p>Javascript, TypeScript, React, Threejs</p>
+                <h4>Tech Stack</h4>
+                <p>{project.tools}</p>
               </div>
-              <WorkImage image="/images/placeholder.webp" alt="" />
+              <WorkImage
+                {...({
+                  image: project.image,
+                  alt: project.title,
+                  link: project.liveLink,
+                  githubLink: project.githubLink,
+                } as any)}
+              />
             </div>
           ))}
         </div>
