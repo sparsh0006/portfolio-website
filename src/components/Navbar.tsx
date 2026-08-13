@@ -42,8 +42,8 @@ const Navbar = () => {
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
-          Logo
+        <a href="/" className="navbar-title" data-cursor="disable">
+          Portfolio
         </a>
         <a
           href="mailto:example@mail.com"
