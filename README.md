@@ -1,66 +1,55 @@
-# My Portfolio Website - Overview 🚀
+# Sparsh
 
-This repository contains the open-source version of my personal portfolio website.  
-Feel free to explore the code and use it for learning and inspiration.
+Full stack Software Engineer with a strong frontend bias, specializing in React.js, Next.js, and TypeScript, backed by working knowledge of Python and Node.js for backend logic. Experienced in building REST APIs, data visualization interfaces, secure authentication flows, and LLM powered features.
 
----
+📍 Delhi NCR, India
+📧 621sparsh@gmail.com
+🔗 LinkedIn | GitHub
 
-## ⚠️ Usage Notice
+## Experience
 
-This project is shared for learning purposes only.
+**Frontend Engineer, Aquanode** (May 2025 — June 2026)
+Leading frontend architecture for a GPU infrastructure platform, building dashboards, configuration workflows, and pricing pages in React.js, Next.js, and TypeScript. Built a reusable component library and improved rendering performance by 40% through code splitting and memoization. Integrated REST APIs for real time system metrics, usage monitoring, and billing visualization.
 
-Please do NOT:
-- Clone or replicate the full website or design
-- Repost it with minor content changes
-- Use this project for commercial/client work
-- Create tutorials or content using this exact project
+**Software Engineer Intern, QuantMaster AI Research & Trading Pvt. Ltd.** (Jul 2024 — Sep 2024)
+Developed frontend solutions for internal analytics dashboards and trading tools using React.js. Worked with the backend team on API integrations and CI/CD pipelines, cutting deployment time by 25%.
 
-If you use parts of the code, you must provide proper credit linking back to the original repository.
+## Projects
 
-Build your own version — don’t just copy.
+**NutriLens AI**
+Multi agent nutrition analysis app built with Next.js and TypeScript, using GPT 4o Vision to convert meal photos into calorie and macro estimates. Includes a 4 agent pipeline, confidence scoring, Opik tracing, and LLM as judge evaluators.
+[GitHub](https://github.com/sparsh0006/Nutrilens-Ai) | [Live](https://nutrilens-ai-brown.vercel.app/)
 
-— Moncy Yohannan
+**AeroLink**
+Data ingestion and visualization platform in React.js, rendering interactive dashboards over 10K+ data points. Built with custom D3.js visualizations and a component driven architecture for scalability.
+[GitHub](https://github.com/sparsh0006/AeroLink) | [Live](https://aero-link-4d3x.vercel.app/)
 
----
+**Treno.fun**
+Full stack Next.js and React fitness staking app with Strava OAuth integration, wallet based authentication, and an automated escrow settlement flow.
+[GitHub](https://github.com/sparsh0006/treno) | [Live](https://www.treno.fun/)
 
-## 🛠️ Instructions
+**More Projects**
+ChatApp — real time messaging app supporting 100+ concurrent users with WebSocket communication
+WeatherApp — weather forecasting app with Express.js backend and real time location based forecasts
+BaseTone — voice activated interface using Web Speech API with 90% recognition accuracy
+LiquidX — Telegram native Solana LP management platform with automated pool selection and MongoDB backed tracking
 
-I have modified the GSAP Club plugins using trial versions.  
-⚠️ Note: Trial plugins cannot be used for production or hosting.
+## Skills
 
-For official GSAP Club plugins, refer here:  
-https://gsap.com/docs/v3/Installation/
+**Languages:** TypeScript, JavaScript, Python, HTML5, CSS3
+**Frontend:** React.js, Next.js, D3.js, Vite, Tailwind CSS, Responsive Design, UI Architecture
+**Backend:** Node.js, Express.js, REST APIs, PostgreSQL, Prisma, MongoDB, WebSockets
+**AI / ML:** GPT 4o Vision, Prompt Engineering, Multi Agent Orchestration, LLM as Judge Evaluation, Opik Tracing
+**Tools:** Git, GitHub, Docker, CI/CD, Webpack, NPM, Figma
+**Blockchain:** Solana, Aptos, Hedera, Smart Contracts, Wallet Integration
 
----
+## Achievements
 
-## ⚙️ Tech Stack
+2× Hackathon Winner
+Hedera AI Agent Hackathon Finalist
+Secured $2,000 Superteam Grant for Satmesh
 
-React • TypeScript • GSAP • Three.js • WebGL • HTML • CSS • JavaScript
+## Education
 
----
-
-## 🎨 Assets Usage
-
-Some 3D assets included in this repository are free to use for learning purposes.
-
-However:
-
-- The original 3D avatar used on my live portfolio is NOT included in this repository
-- That avatar is a custom asset created over ~1 month
-- It is not open source and not available for reuse
-
-Any usage, extraction, or redistribution of that avatar from my live website is strictly prohibited.
-
----
-
-![Protfolio-Preview](https://github.com/user-attachments/assets/3c4557e7-6392-4928-b8a9-7b2476ef4edd)
-
----
-
-## 📄 License
-
-This project is licensed under the Personal Portfolio License (PPL) v1.0.
-
-See the LICENSE file for full details
-
-# portfolio-website
+**Dr. A. P. J. Abdul Kalam Technical University** (2021 — 2025)
+Bachelor of Technology in Computer Science, CGPA 6.44
