@@ -143,43 +143,6 @@ const WhatIDo = () => {
               <div className="what-arrow"></div>
             </div>
           </div>
-          <div
-            className="what-content what-noTouch"
-            ref={(el) => setRef(el, 2)}
-          >
-            <div className="what-border1">
-              <svg height="100%">
-                <line
-                  x1="0"
-                  y1="100%"
-                  x2="100%"
-                  y2="100%"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeDasharray="6,6"
-                />
-              </svg>
-            </div>
-            <div className="what-corner"></div>
-            <div className="what-content-in">
-              <h3>AI & WEB3</h3>
-              <h4>Exploring emerging tech</h4>
-              <p>
-                Building with LLM pipelines, multi agent systems, and blockchain integrations. Interested in how AI and Web3 can enhance products beyond the hype.
-              </p>
-              <h5>Skillset & tools</h5>
-              <div className="what-content-flex">
-                <div className="what-tags">GPT Vision</div>
-                <div className="what-tags">Prompt Engineering</div>
-                <div className="what-tags">loops</div>
-                <div className="what-tags">Solana</div>
-                <div className="what-tags">Hedera</div>
-                <div className="what-tags">Wallet Integration</div>
-                <div className="what-tags">Smart Contracts</div>
-              </div>
-              <div className="what-arrow"></div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
