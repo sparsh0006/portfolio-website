@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const projectsData = [
   {
@@ -15,7 +15,7 @@ const projectsData = [
     image: "/images/treno.png",
     liveLink: "https://www.treno.fun/",
     githubLink: "https://github.com/sparsh0006/treno",
-    description: "Group fitness-staking dApp with Strava integration"
+    description: "Group fitness-staking dApp with Strava integration",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const projectsData = [
     image: "/images/nutrilens.png",
     liveLink: "https://nutrilens-ai-brown.vercel.app/",
     githubLink: "https://github.com/sparsh0006/Nutrilens-Ai",
-    description: "Multi-agent nutrition analysis with vision AI"
+    description: "Multi-agent nutrition analysis with vision AI",
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const projectsData = [
     image: "/images/aerolink.png",
     liveLink: "https://aero-link-4d3x.vercel.app/",
     githubLink: "https://github.com/sparsh0006/AeroLink",
-    description: "Environmental monitoring platform with data visualization"
+    description: "Environmental monitoring platform with data visualization",
   },
   {
     id: 4,
@@ -45,7 +45,7 @@ const projectsData = [
     image: "/images/moltcourt.png",
     liveLink: "https://moltcourt-azure.vercel.app/",
     githubLink: "https://github.com/sparsh0006/moltcourt",
-    description: "Court management and case tracking system"
+    description: "Court management and case tracking system",
   },
   {
     id: 5,
@@ -55,49 +55,80 @@ const projectsData = [
     image: "/images/frames402.png",
     liveLink: "https://frames402.vercel.app/",
     githubLink: "https://github.com/sparsh0006/Frames402",
-    description: "Interactive design showcase and component library"
-  }
+    description: "Interactive design showcase and component library",
+  },
 ];
 
 const Work = () => {
   useGSAP(() => {
-  let translateX: number = 0;
+    const mm = gsap.matchMedia();
 
-  function setTranslateX() {
-    const box = document.getElementsByClassName("work-box");
-    const rectLeft = document
-      .querySelector(".work-container")!
-      .getBoundingClientRect().left;
-    const rect = box[0].getBoundingClientRect();
-    const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
-    let padding: number =
-      parseInt(window.getComputedStyle(box[0]).padding) / 2;
-    translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
-  }
+    // -----------------------------------------
+    // DESKTOP
+    // -----------------------------------------
+    mm.add("(min-width: 1026px)", () => {
+      const section = document.querySelector(".work-section");
+      const container = document.querySelector(".work-container");
+      const flex = document.querySelector(".work-flex");
 
-  setTranslateX();
+      if (!section || !container || !flex) return;
 
-  let timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".work-section",
-      start: "top top",
-      end: `+=${translateX}`,
-      scrub: true,
-      pin: true,
-      id: "work",
-    },
+      const updateDistance = () => {
+        const flexWidth = flex.scrollWidth;
+        const containerWidth = container.clientWidth;
+
+        return Math.max(0, flexWidth - containerWidth);
+      };
+
+      const getDistance = () => {
+        return updateDistance();
+      };
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: () => `+=${getDistance()}`,
+          scrub: 0.8,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          id: "work",
+        },
+      });
+
+      timeline.to(flex, {
+        x: () => -getDistance(),
+        ease: "none",
+      });
+
+      const refresh = () => {
+        ScrollTrigger.refresh();
+      };
+
+      window.addEventListener("load", refresh);
+
+      return () => {
+        window.removeEventListener("load", refresh);
+        timeline.kill();
+      };
+    });
+
+    // -----------------------------------------
+    // MOBILE / TABLET
+    // -----------------------------------------
+    mm.add("(max-width: 1025px)", () => {
+      // Completely disable GSAP pinning on mobile.
+      // Native touch scrolling is much smoother on iOS/Android.
+      gsap.set(".work-flex", {
+        clearProps: "transform",
+      });
+    });
+
+    return () => {
+      mm.revert();
+    };
   });
-
-  timeline.to(".work-flex", {
-    x: -translateX,
-    ease: "none",
-  });
-
-  return () => {
-    timeline.kill();
-    ScrollTrigger.getById("work")?.kill();
-  };
-}, []);
 
   return (
     <div className="work-section" id="work">
@@ -105,6 +136,7 @@ const Work = () => {
         <h2>
           My <span>Work</span>
         </h2>
+
         <div className="work-flex">
           {projectsData.map((project) => (
             <div className="work-box" key={project.id}>
@@ -117,16 +149,16 @@ const Work = () => {
                     <p>{project.category}</p>
                   </div>
                 </div>
+
                 <h4>Tech Stack</h4>
                 <p>{project.tools}</p>
               </div>
+
               <WorkImage
-                {...({
-                  image: project.image,
-                  alt: project.title,
-                  link: project.liveLink,
-                  githubLink: project.githubLink,
-                } as any)}
+                image={project.image}
+                alt={project.title}
+                link={project.liveLink}
+                githubLink={project.githubLink}
               />
             </div>
           ))}
