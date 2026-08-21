@@ -18,7 +18,6 @@ const Navbar = () => {
       effects: true,
       autoResize: true,
       ignoreMobileResize: true,
-      smoothTouch: 0,
     });
 
     smoother.scrollTop(0);
@@ -36,29 +35,10 @@ const Navbar = () => {
         }
       });
     });
-
-    // Only refresh on a genuine width change (real resize / orientation
-    // change). Ignores height-only changes caused by the mobile browser's
-    // address bar showing/hiding mid-scroll, which is what was forcing a
-    // ScrollSmoother.refresh(true) mid-gesture and causing the jitter.
-    let lastWidth = window.innerWidth;
-    let resizeTimeout: ReturnType<typeof setTimeout>;
-    const handleResize = () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        if (window.innerWidth !== lastWidth) {
-          lastWidth = window.innerWidth;
-          ScrollSmoother.refresh(true);
-        }
-      }, 200);
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    window.addEventListener("resize", () => {
+      ScrollSmoother.refresh(true);
+    });
   }, []);
-
   return (
     <>
       <div className="header">

@@ -1,6 +1,7 @@
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
@@ -60,48 +61,43 @@ const projectsData = [
 
 const Work = () => {
   useGSAP(() => {
-    const mm = gsap.matchMedia();
+  let translateX: number = 0;
 
-    // Horizontal pin/scrub scroll-jack only runs on desktop.
-    // Below this width the CSS stacks .work-box vertically, so GSAP
-    // shouldn't be pinning or translating the row at all on mobile.
-    mm.add("(min-width: 1026px)", () => {
-      function getTranslateX() {
-        const box = document.getElementsByClassName("work-box");
-        const rectLeft = document
-          .querySelector(".work-container")!
-          .getBoundingClientRect().left;
-        const rect = box[0].getBoundingClientRect();
-        const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
-        const padding = parseInt(window.getComputedStyle(box[0]).padding) / 2;
-        return rect.width * box.length - (rectLeft + parentWidth) + padding;
-      }
+  function setTranslateX() {
+    const box = document.getElementsByClassName("work-box");
+    const rectLeft = document
+      .querySelector(".work-container")!
+      .getBoundingClientRect().left;
+    const rect = box[0].getBoundingClientRect();
+    const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
+    let padding: number =
+      parseInt(window.getComputedStyle(box[0]).padding) / 2;
+    translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
+  }
 
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".work-section",
-          start: "top top",
-          end: () => `+=${getTranslateX()}`,
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          id: "work",
-        },
-      });
+  setTranslateX();
 
-      timeline.to(".work-flex", {
-        x: () => -getTranslateX(),
-        ease: "none",
-      });
+  let timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".work-section",
+      start: "top top",
+      end: `+=${translateX}`,
+      scrub: true,
+      pin: true,
+      id: "work",
+    },
+  });
 
-      return () => {
-        timeline.kill();
-      };
-    });
+  timeline.to(".work-flex", {
+    x: -translateX,
+    ease: "none",
+  });
 
-    return () => mm.revert();
-  }, []);
+  return () => {
+    timeline.kill();
+    ScrollTrigger.getById("work")?.kill();
+  };
+}, []);
 
   return (
     <div className="work-section" id="work">
