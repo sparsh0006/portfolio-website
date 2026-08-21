@@ -4,7 +4,7 @@ const About = () => {
   return (
     <div className="about-section" id="about">
       <div className="about-me">
-        <h3 className="title">About Me</h3>
+        <h1 className="title">About Me</h1>
         <p className="para">
           Full stack engineer based in Delhi NCR, building with React, Next.js and
           TypeScript. Focused on frontend architecture and clean, scalable
